@@ -1,0 +1,13 @@
+
+
+/model/adult_randomforest.pkl
+/model/adult_xgboost.pkl
+/model/german_randomforest.pkl
+/model/german_xgboost.pkl
+/model/result.txt
+
+
+/.idea
+/.DS_Store
+/__pycache__
+
