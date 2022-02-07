@@ -6,8 +6,13 @@
 /model/german_xgboost.pkl
 /model/result.txt
 
+/Plot/Pdp
+/Plot/Shap
+
+/DataShap
 
 /.idea
 /.DS_Store
 /__pycache__
 
+/Lime/jupyterCode/.ipynb_checkpoints
