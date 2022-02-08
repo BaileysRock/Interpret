@@ -16,3 +16,5 @@
 /__pycache__
 
 /Lime/jupyterCode/.ipynb_checkpoints
+/Lime/example
+/Lime/result
