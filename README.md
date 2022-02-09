@@ -12,8 +12,10 @@
 
 # 4.训练xgboost、randomfoerst模型，并保存到model中
 
+
 # 5.在InterpretModel中选择解释
 
 
-
+# 保存lime结果
+jupyter nbconvert --to html limeInterpret.ipynb
 

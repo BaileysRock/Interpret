@@ -5,7 +5,7 @@
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
 from sklearn.model_selection import train_test_split
-
+import numpy as np
 
 def loadAdult():
     """
@@ -45,9 +45,20 @@ def loadData():
     adultTest = pd.read_csv("./DataSetProcess/adultTest.txt")
     germanTrain = pd.read_csv("./DataSetProcess/germanTrain.txt")
     germanTest = pd.read_csv("./DataSetProcess/germanTest.txt")
-
-    adultTrain['income'] = LabelEncoder().fit_transform(adultTrain['income'])
-    adultTest['income'] = LabelEncoder().fit_transform(adultTest['income'])
+    labelEncoderAdultTrain = LabelEncoder()
+    adultTrain['income'] = labelEncoderAdultTrain.fit_transform(adultTrain['income'])
+    labelEncoderAdultTest = LabelEncoder()
+    adultTest['income'] = labelEncoderAdultTest.fit_transform(adultTest['income'])
+    labelEncoderGermanTrain = LabelEncoder()
+    germanTrain['class'] = labelEncoderGermanTrain.fit_transform(germanTrain['class'])
+    labelEncoderGermanTest = LabelEncoder()
+    germanTest['class'] = labelEncoderGermanTest.fit_transform(germanTest['class'])
+    if (labelEncoderAdultTrain.classes_ == labelEncoderAdultTest.classes_).all() == False:
+        exit()
+    if (labelEncoderGermanTrain.classes_ == labelEncoderGermanTest.classes_).all() == False:
+        exit()
+    print(labelEncoderAdultTrain.classes_)
+    print(labelEncoderGermanTrain.classes_)
     adult_train_y = adultTrain["income"]
     adult_train_X = adultTrain.drop('income', axis=1)
     adult_test_y = adultTest["income"]

@@ -58,7 +58,7 @@ def shapPlot(model, X_train, data, dir: str):
     shap.summary_plot(shap_values, datacolumns, plot_type="bar", show=False)
     # shap.summary_plot(shap_values, datacolumns)
     # plt.show()
-    plt.figure(figsize=(500, 500))
+    # plt.figure(figsize=(500, 500))
     picturePath = "./Plot/Shap/" + dir + ".png"
     plt.savefig(picturePath, bbox_inches='tight')
     # plt.show()
@@ -91,8 +91,11 @@ if __name__ == '__main__':
     # choice = 0 使用shap解释
     # choice = 1 使用pdp解释
     if choice == 0:
+        # randomforest
         shapPlot(model=german_randomforest_model, X_train=german_train_X, data=German, dir="germanRandomforest")
         # shapPlot(model=adult_randomforest_model, X_train=adult_train_X, data=Adult, dir="adultRandomforest")
 
+        shapPlot(model=german_xgboost_model,X_train=german_train_X, data=German, dir="germanXgboost")
+        shapPlot(model=adult_xgboost_model,X_train=adult_train_X,data = Adult,dir="adultXgboost")
     else:
         pass

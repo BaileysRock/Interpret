@@ -88,13 +88,13 @@ def Xgboost(X_train, Y_train, X_test, Y_test, choice):
     if choice == 0:
         model = XGBClassifier(n_estimators=5000, max_depth=10, min_child_weight=2,
                               gamma=0.9, subsample=0.8, colsample_bytree=0.8,
-                              objective='binary:logitraw', nthread=-1,
+                              objective='multi:softmax',num_class = 2, nthread=-1,n_jobs=-1,
                               scale_pos_weight=1)
         model_name = "./model/adult_xgboost.pkl"
     elif choice == 1:
         model = XGBClassifier(n_estimators=2000, max_depth=6, min_child_weight=2,
                               gamma=0.9, subsample=0.8, colsample_bytree=0.8,
-                              objective='binary:logitraw', nthread=-1,
+                              objective='multi:softmax',num_class = 2, nthread=-1,n_jobs=-1,
                               scale_pos_weight=1)
         model_name = "./model/german_xgboost.pkl"
     else:
@@ -155,7 +155,7 @@ if __name__ == '__main__':
     adult_train_y, adult_train_X, adult_test_y, adult_test_X, german_train_y, german_train_X, german_test_y, german_test_X = loadData()
 
     # choice = 0、1、2，分别测试不同randomforest、xgboost、svm
-    choice = 1
+    choice = 0
     if choice == 0:
         # adult的模型
         adult_randomforest = randomForest(X_train=adult_train_X, Y_train=adult_train_y, X_test=adult_test_X,
